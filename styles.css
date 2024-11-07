@@ -1,0 +1,82 @@
+/* Reset margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+  }
+  
+  .screen {
+    width: 1366px;
+    height: 768px;
+  }
+  .titlebar {
+    width: 1366px;
+    height: 131px;
+    background-color: gray;
+  }
+  .maincontent
+  {
+    width: 1366px;
+    height: 390px;
+    display: flex;
+    background-color: goldenrod;
+  }
+  .pokemonsprite
+  {
+    width: 390px;
+    height: 390px;
+    background-color: blueviolet;
+  }
+  .pokemonlist
+  {
+    width: 570px;
+    height: 390px;
+    background-color: cyan;
+    scroll-behavior: smooth;
+    overflow-y: auto;
+    -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+  }
+  .pokeball
+  {
+    width: 390px;
+    height: 390px;
+  }
+  .pokeball img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.1s ease-out; /* Smooth transition when rotating */
+}
+
+  
+  .bottombar
+  {
+    width: 1366px;
+    height: 248px;
+    background-color: gray;
+  }
+
+  .grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 550px;
+    height: 65px;
+    margin: 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    
+  }
+  
+  
+  
