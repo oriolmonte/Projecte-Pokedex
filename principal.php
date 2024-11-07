@@ -33,6 +33,24 @@
                 echo "Error: Could not open the file.";
             }
           ?>
+          <script>
+            // Get all div elements with class 'item'
+            const divs = document.querySelectorAll('.grid-item');
+            ///ORIOL TODO: Aixo es una inline function js que cliques un div i sen va a la pokedex entry, nomes hauria de carregar la imatge. 
+            // Aixo es lo que hauria de fer el boto de veure detalls
+            divs.forEach(div => {
+                div.addEventListener('click', function() {
+                    // Get the text content of the clicked div
+                    const text = this.textContent.toLowerCase();
+
+                    // Encode the text to safely use it in the URL
+                    const encodedText = encodeURIComponent(text);
+
+                    // Redirect to another page with the text as a GET parameter
+                    window.location.href = `PantallaDetall.php?pokemon=${encodedText}`;
+                });
+            });
+        </script>
         </div>
         <div class="pokeball">
             <img src="./res/pokeball.png" alt="Spinning Image" class="spinning-image">
