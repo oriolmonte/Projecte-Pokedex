@@ -5,8 +5,6 @@ error_reporting(E_ALL);
 
 function getPokemonData($pokemonNameOrId) {
     $apiUrl = "https://pokeapi.co/api/v2/pokemon/" . $pokemonNameOrId;
-    $maxRetries = 3; // Number of times to retry in case of 500 errors
-    $retryDelay = 2; // Delay in seconds between retries
     $curl = curl_init($apiUrl);
 
     curl_setopt($curl, CURLOPT_URL, $apiUrl);
@@ -53,6 +51,7 @@ function getPokemonData($pokemonNameOrId) {
 
 $pokemonNameOrId = $_GET['pokemon'];
 $globalPokemon = getPokemonData($pokemonNameOrId);
+echo $globalPokemon['name'];
 
 function getImages(){
     global $globalPokemon;
