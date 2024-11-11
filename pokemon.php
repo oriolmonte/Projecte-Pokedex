@@ -1,10 +1,10 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 
 function getPokemonData($pokemonNameOrId) {
     $apiUrl = "https://pokeapi.co/api/v2/pokemon/" . $pokemonNameOrId;
+    $maxRetries = 3; // Number of times to retry in case of 500 errors
+    $retryDelay = 2; // Delay in seconds between retries
     $curl = curl_init($apiUrl);
 
     curl_setopt($curl, CURLOPT_URL, $apiUrl);
@@ -50,13 +50,12 @@ function getPokemonData($pokemonNameOrId) {
 }
 
 $pokemonNameOrId = $_GET['pokemon'];
-$globalPokemon = getPokemonData($pokemonNameOrId);
-echo $globalPokemon['name'];
+$globalPokemon = getPokemonData(pokemonNameOrId: $pokemonNameOrId);
 
 function getImages(){
     global $globalPokemon;
     if (isset($globalPokemon['sprites'])) {
-        $normalSprite = $globalPokemon['sprites']['other']['official-artwork']['front_default'];
+        $normalSprite = $globalPokemon['sprites']['other']['showdown']['front_default'];
         $shinySprite = $globalPokemon['sprites']['other']['official-artwork']['front_shiny'];
 
         // Echo out the image elements
@@ -64,6 +63,15 @@ function getImages(){
         echo "<img src='$shinySprite' alt='Shiny Sprite' />";
     } else {
         echo "<p>No images available.</p>";
+    }
+}
+function getSprite(): void{
+    global $globalPokemon;
+    if (isset($globalPokemon['sprites'])) {
+        $normalSprite = $globalPokemon['sprites']['other']['showdown']['front_default'];
+        // Echo out the image elements
+        echo "<img src='$normalSprite' alt='Normal Sprite' />";
+    } else {
     }
 }
 

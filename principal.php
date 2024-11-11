@@ -1,18 +1,24 @@
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fixed Size Page</title>
+  <title>Pokedex</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<?php include "pokemon.php"; ?>
+
   <div class="screen">
     <div class="titlebar">        
     </div>
     <div class="maincontent">
         <div class="pokemonsprite">
-            <p>aaa</p>
+            <div class="actualsprite">
+                <?php getSprite() ?>
+            </div>
         </div>
         <div class="pokemonlist">
           <?php
@@ -45,22 +51,32 @@
 
                     // Encode the text to safely use it in the URL
                     const encodedText = encodeURIComponent(text);
-
-                    // Redirect to another page with the text as a GET parameter
-                    window.location.href = `PantallaDetall.php?pokemon=${encodedText}`;
+                    window.location.href = `principal.php?pokemon=${encodedText}`;
                 });
             });
         </script>
         </div>
         <div class="pokeball">
-            <img src="./res/pokeball.png" alt="Spinning Image" class="spinning-image">
+            <img src="./res/imgPokeball.png" alt="Spinning Image" class="spinning-image">
         </div>
     </div>
     <div class="bottombar">
-        <p>aaa</p>
+        <div class="bottomspacer"></div>
+        <div class="searchbutton">
+            <img src="./res/searchbutton.png">
+        </div>
+        <div class="bottomspacer"></div>
+        <div class="bottomspacer"></div>
+        <div class="bottomspacer"></div>
+        <div class="bottomspacer"></div>
+        <div class="bottomspacer"></div>
+        <div class="checkbutton">
+            <img src="./res/checkbutton.png">
+        </div>
     </div>
   </div>
   <script src="principal.js"></script>
 </body>
 
 </html>
+
