@@ -21,15 +21,21 @@
           <?php
             $file = 'pokemon_names.txt';
             $handle = fopen($file, 'r');
+            $toSearchBy = $_GET['searchBy'];
+            $pokemonArray = [];
 
             // Check if the file opened successfully
             if ($handle) {
-                // Loop through the file line by line
-                $i = 0;
                 while (($line = fgets($handle)) !== false) {
                     $line = trim($line);
-                    $i++;
-                    echo '<div class="grid-item">'.$line.'</div>';
+                    if(!empty($toSearchBy)){
+                        if(str_starts_with(strtolower(trim($line)), $toSearchBy)){
+                            echo "<div class='grid-item'>{$line}</div>";    
+                        }                    
+                    }
+                    else{
+                        echo "<div class='grid-item'>{$line}</div>";
+                    }
                 }
                 fclose($handle);
             } else {
@@ -37,6 +43,7 @@
             }
           ?>
             <script>
+                const container = document.querySelector(".actualsprite");
                 const divs = document.querySelectorAll('.grid-item');
                 divs.forEach(div => {
                     div.addEventListener('click', function() {
@@ -50,7 +57,6 @@
                             if(!response.ok) throw new Error("No response");
                             const data = await response.json();
 
-                            const container = document.querySelector(".actualsprite");
                             container.innerHTML = "";
                             const img = document.createElement('img');
                             var imgLink = data.sprites.front_default;
@@ -65,12 +71,12 @@
                         // window.location.href = `principal.php?pokemon=${encodedText}`;
                     });
                 });    
-                const currContImg =document.querySelector(".actualsprite");
                 const img = document.createElement('img');
-                fetch("https://pokeapi.co/api/v2/pokemon/bulbasaur")
+                const firstPokemon = document.querySelector('.grid-item');
+                fetch("https://pokeapi.co/api/v2/pokemon/" + firstPokemon.textContent.toLowerCase())
                     .then(response => response.json())
                     .then(data => img.src = data.sprites.front_default)
-                    .then(currContImg.appendChild(img))
+                    .then(container.appendChild(img))
                     .catch(error => console.error('Error:', error));
             </script>
         </div>
@@ -80,13 +86,51 @@
     </div>
     <div class="bottombar">
         <div class="bottomspacer"></div>
-        <div class="searchbutton">
-            <img src="./res/searchbutton.png">
+        <div class="searchbutton" id="searchButtonDiv">
+            <img src="./res/searchbutton.png" id="searchButton">
+            <script>
+                var searchButtonDiv = document.getElementById("searchButtonDiv")
+                var searchButton =document.getElementById("searchButton");
+                searchButtonDiv.addEventListener('click', function() {
+
+                    var inputValue = document.getElementById("pokemonSearcher").value.trim();
+                    var newHref = `principal.php?searchBy=${encodeURIComponent(inputValue)}`;
+                    
+                    const urlParams = new URLSearchParams(window.location.search);
+                    
+                    const currentPokemon = urlParams.get('searchBy');
+
+                    if(!(!currentPokemon && inputValue==""))
+                    {
+                        if (inputValue && inputValue !== currentPokemon) {
+                            window.location.href = newHref;
+                        } else if (!inputValue) {
+                            // If the input is empty, redirect to the main page without parameters
+                            window.location.href = 'principal.php';
+                        }
+                        
+                    }
+                });
+                searchButtonDiv.addEventListener('mousedown', function() {
+                    searchButton.src = "./res/searchbuttonpressed.png";
+                });
+                searchButtonDiv.addEventListener('mouseup', function() {
+                    searchButton.src = "./res/searchbutton.png";
+                });
+        </script>
         </div>
         <div class="bottomspacer"></div>
-        <div class="bottomspacer"></div>
-        <div class="bottomspacer"></div>
-        <div class="bottomspacer"></div>
+        <input type="text" class="searcher" id="pokemonSearcher" name="pokemonSearcher">
+        <script>                
+            const searcherInput =document.getElementById("pokemonSearcher");
+                
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const currentPokemon = urlParams.get('searchBy');
+            if(currentPokemon !== ""){
+                searcherInput.value =currentPokemon;
+            }
+        </script>
         <div class="bottomspacer"></div>
         <div class="checkbutton">
             <img src="./res/checkbutton.png">
