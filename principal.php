@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -16,7 +15,6 @@
     <div class="maincontent">
         <div class="pokemonsprite">
             <div class="actualsprite">
-                <?php getSprite() ?>
             </div>
         </div>
         <div class="pokemonlist">
@@ -38,19 +36,43 @@
                 echo "Error: Could not open the file.";
             }
           ?>
-          <script>
-            // Get all div elements with class 'grid item'
-            const divs = document.querySelectorAll('.grid-item');
-            divs.forEach(div => {
-                div.addEventListener('click', function() {
-                    const text = this.textContent.toLowerCase();
+            <script>
+                const divs = document.querySelectorAll('.grid-item');
+                divs.forEach(div => {
+                    div.addEventListener('click', function() {
+                        const text = this.textContent.toLowerCase();
 
-                    const encodedText = encodeURIComponent(text);
-                    //carreguem la pagina amb el pokemon demanat
-                    window.location.href = `principal.php?pokemon=${encodedText}`;
-                });
-            });
-        </script>
+                        const encodedText = encodeURIComponent(text);
+                        var apiUrl = "https://pokeapi.co/api/v2/pokemon/" + encodedText;
+                        window.selectedPokemon = encodedText;
+                        async function getPokemonData (){
+                            const response = await fetch(apiUrl);
+                            if(!response.ok) throw new Error("No response");
+                            const data = await response.json();
+
+                            const container = document.querySelector(".actualsprite");
+                            container.innerHTML = "";
+                            const img = document.createElement('img');
+                            var imgLink = data.sprites.front_default;
+                            if(imgLink == null)
+                                imgLink = data.sprites.other["official-artwork"].front_default;
+                            img.src = imgLink;
+                            img.alt = data.name + " front image";
+                            container.appendChild(img);
+                        }
+                        getPokemonData();
+                        // //carreguem la pagina amb el pokemon demanat
+                        // window.location.href = `principal.php?pokemon=${encodedText}`;
+                    });
+                });    
+                const currContImg =document.querySelector(".actualsprite");
+                const img = document.createElement('img');
+                fetch("https://pokeapi.co/api/v2/pokemon/bulbasaur")
+                    .then(response => response.json())
+                    .then(data => img.src = data.sprites.front_default)
+                    .then(currContImg.appendChild(img))
+                    .catch(error => console.error('Error:', error));
+            </script>
         </div>
         <div class="pokeball">
             <img src="./res/imgPokeball.png" alt="Spinning Image" class="spinning-image">

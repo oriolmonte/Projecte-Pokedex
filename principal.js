@@ -3,6 +3,7 @@ let startY;
 let scrollTop;
 const pokeballImage = document.querySelector('.pokeball img');
 const pokemonList = document.querySelector('.pokemonlist');
+window.selectedPokemon = "bulbasaur";
 
 pokemonList.addEventListener('mousedown', (e) => {
   isDragging = true;
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
 
   chk.addEventListener('click', () => {
-    const pokemon = urlParams.get('pokemon')
+    const pokemon = window.selectedPokemon;
     if (pokemon) {
       // Load the page with the requested pokemon
       window.location.href = `PantallaDetall.php?pokemon=${pokemon}`;
@@ -77,3 +78,4 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Scroll Position:", scrollPosition, "Rotation:", rotationDegree);
   });
 });
+

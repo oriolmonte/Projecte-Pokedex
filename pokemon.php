@@ -55,8 +55,12 @@ $globalPokemon = getPokemonData(pokemonNameOrId: $pokemonNameOrId);
 function getImages(){
     global $globalPokemon;
     if (isset($globalPokemon['sprites'])) {
-        $normalSprite = $globalPokemon['sprites']['other']['showdown']['front_default'];
-        $shinySprite = $globalPokemon['sprites']['other']['official-artwork']['front_shiny'];
+        $normalSprite = $globalPokemon['sprites']['other']['home']['front_default'];
+        $shinySprite = $globalPokemon['sprites']['other']['home']['front_shiny'];
+        if(!isset($normalSprite) || !isset($shinySprite)){
+            $normalSprite = $globalPokemon['sprites']['other']['official-artwork']['front_default'];
+            $shinySprite = $globalPokemon['sprites']['other']['official-artwork']['front_shiny'];
+        }
 
         // Echo out the image elements
         echo "<img src='$normalSprite' alt='Normal Sprite' />";
