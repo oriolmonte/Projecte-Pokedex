@@ -45,10 +45,26 @@ pokemonList.addEventListener('touchmove', (e) => {
   pokemonList.scrollTop = scrollTop - walk;
 });
 
+
 document.addEventListener('DOMContentLoaded', () => {
   const pokemonList = document.querySelector('.pokemonlist');
   const pokeballImage = document.querySelector('.pokeball img');
+  const chk = document.querySelector('.checkbutton');
+  const urlParams = new URLSearchParams(window.location.search);
 
+  chk.addEventListener('click', () => {
+    const pokemon = urlParams.get('pokemon')
+    if (pokemon) {
+      // Load the page with the requested pokemon
+      window.location.href = `PantallaDetall.php?pokemon=${pokemon}`;
+    } else {
+      console.log('No pokemon parameter in URL');
+    }
+
+    //carreguem la pagina amb el pokemon demanat
+    window.location.href = `PantallaDetall.php?pokemon=${pokemon}`;
+  });
+  
   pokemonList.addEventListener('scroll', () => {
     const scrollPosition = pokemonList.scrollTop;
 

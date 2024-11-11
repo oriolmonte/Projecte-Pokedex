@@ -10,7 +10,6 @@
 </head>
 <body>
 <?php include "pokemon.php"; ?>
-
   <div class="screen">
     <div class="titlebar">        
     </div>
@@ -40,17 +39,14 @@
             }
           ?>
           <script>
-            // Get all div elements with class 'item'
+            // Get all div elements with class 'grid item'
             const divs = document.querySelectorAll('.grid-item');
-            ///ORIOL TODO: Aixo es una inline function js que cliques un div i sen va a la pokedex entry, nomes hauria de carregar la imatge. 
-            // Aixo es lo que hauria de fer el boto de veure detalls
             divs.forEach(div => {
                 div.addEventListener('click', function() {
-                    // Get the text content of the clicked div
                     const text = this.textContent.toLowerCase();
 
-                    // Encode the text to safely use it in the URL
                     const encodedText = encodeURIComponent(text);
+                    //carreguem la pagina amb el pokemon demanat
                     window.location.href = `principal.php?pokemon=${encodedText}`;
                 });
             });
