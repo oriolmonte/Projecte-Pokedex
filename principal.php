@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<audio id="button-press">
+  <source src="res/button.m4a" type="audio/mpeg">
+</audio>
 <?php include "pokemon.php"; ?>
   <div class="screen">
     <div class="titlebar">        
@@ -89,9 +92,15 @@
         <div class="searchbutton" id="searchButtonDiv">
             <img src="./res/searchbutton.png" id="searchButton">
             <script>
+
+                function carregaPagina(pagina){
+                    window.location.href = pagina;
+                }
+
                 var searchButtonDiv = document.getElementById("searchButtonDiv")
                 var searchButton =document.getElementById("searchButton");
                 searchButtonDiv.addEventListener('click', function() {
+                    document.getElementById("button-press").play() ;
 
                     var inputValue = document.getElementById("pokemonSearcher").value.trim();
                     var newHref = `principal.php?searchBy=${encodeURIComponent(inputValue)}`;
@@ -103,10 +112,10 @@
                     if(!(!currentPokemon && inputValue==""))
                     {
                         if (inputValue && inputValue !== currentPokemon) {
-                            window.location.href = newHref;
+                            setTimeout(()=>{carregaPagina(newHref)}, 750);
                         } else if (!inputValue) {
                             // If the input is empty, redirect to the main page without parameters
-                            window.location.href = 'principal.php';
+                           setTimeout(()=>{carregaPagina('principal.php')}, 750);
                         }
                         
                     }

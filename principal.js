@@ -51,9 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const pokemonList = document.querySelector('.pokemonlist');
   const pokeballImage = document.querySelector('.pokeball img');
   const chk = document.querySelector('.checkbutton');
+
   const urlParams = new URLSearchParams(window.location.search);
 
   chk.addEventListener('click', () => {
+    document.getElementById("button-press").play() ;
     const pokemon = window.selectedPokemon;
     if (pokemon) {
       // Load the page with the requested pokemon
