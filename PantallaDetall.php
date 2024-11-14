@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DetailScreen</title>
-    <link rel="stylesheet" href="PantallaDetall.css">
+    <link rel="stylesheet" href="stylesdetall.css">
 </head>
 <body>
     <?php include "pokemon.php"; ?>

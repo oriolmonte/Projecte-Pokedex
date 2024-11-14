@@ -49,25 +49,8 @@ pokemonList.addEventListener('touchmove', (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const pokemonList = document.querySelector('.pokemonlist');
-  const pokeballImage = document.querySelector('.pokeball img');
-  const chk = document.querySelector('.checkbutton');
-
-  const urlParams = new URLSearchParams(window.location.search);
-
-  chk.addEventListener('click', () => {
-    document.getElementById("button-press").play() ;
-    const pokemon = window.selectedPokemon;
-    if (pokemon) {
-      // Load the page with the requested pokemon
-      window.location.href = `PantallaDetall.php?pokemon=${pokemon}`;
-    } else {
-      console.log('No pokemon parameter in URL');
-    }
-
-    //carreguem la pagina amb el pokemon demanat
-    window.location.href = `PantallaDetall.php?pokemon=${pokemon}`;
-  });
-  
+  const pokeballImage = document.querySelector('.pokeball img');  
+  setTimeout(carregaPantalla(),750);
   pokemonList.addEventListener('scroll', () => {
     const scrollPosition = pokemonList.scrollTop;
 
@@ -80,4 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Scroll Position:", scrollPosition, "Rotation:", rotationDegree);
   });
 });
+
+
+
 

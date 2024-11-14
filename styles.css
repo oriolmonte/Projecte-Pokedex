@@ -109,6 +109,7 @@
 .searcher{
   width:300px;
   height: 65px;
+  font-size: large;
 }
 .grid-item {
   display: flex;
