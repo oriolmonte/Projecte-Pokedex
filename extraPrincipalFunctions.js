@@ -26,10 +26,6 @@ function SetDivsClick(){
         });
     });    
   }
-  
-  function carregaPantalla(href){
-    window.location.href = href;
-  }
 
   function LoadFirstPokemonSprite(){
     const container = document.querySelector(".actualsprite");
@@ -46,8 +42,8 @@ function SetDivsClick(){
     const chk = document.getElementById("informationButton");
     
     chk.addEventListener('click', () => {
-        document.getElementById("button-press").play() ;
-
+        var audio = document.getElementById("button-press");
+        audio.volume = .5;
     });
   }
   
@@ -57,7 +53,7 @@ function SetDivsClick(){
       chk.addEventListener('click', () => {
         const pokemon = window.selectedPokemon;
         if (pokemon) {
-            carregaPantalla(`PantallaDetall.php?pokemon=${pokemon}`);
+            window.location.href = `PantallaDetall.php?pokemon=${pokemon}`;
         } else {
           console.log('No pokemon parameter in URL');
         }

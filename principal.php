@@ -12,7 +12,6 @@
 <audio id="button-press">
   <source src="res/button.wav" type="audio/mpeg">
 </audio>
-<?php include "pokemon.php"; ?>
   <div class="screen">
     <div class="titlebar">        
     </div>

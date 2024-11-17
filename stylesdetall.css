@@ -4,6 +4,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #4f4f4f;
  }
 
 .primerafila{
@@ -118,14 +119,20 @@ body, html {
     width: 120px;
     height: 120px;
     margin: 30px;
-    background-color: black;
+    background-color: wheat;
+    align-items:center;
+
+}
+.typeImage{
+    margin:5px;
+    width:100px;
 }
 .measurements
 {
-    width: 120px;
+    width: 500px;
     height: 120px;
     margin: 30px;
-    background-color: black;
+    background-color: white;
 }
 .evolutions
 {
@@ -136,7 +143,7 @@ body, html {
     width: 530px;
     height: 140px;
     margin: 30px;
-    background-color: black;
+    background-color: white;
 }
 .statstable{
     width: 767px;
@@ -145,9 +152,23 @@ body, html {
 }
 .statbar
 {
-    padding: 22px;
+    width: 80%;
+    height:35px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    background-color: #8a7f7f;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 20px 0;
+    position: relative;
 }
 .statname
 {
     width: 10%;
 }
+.innerStatsBar{
+    height: 100%;
+    width:0;
+    border-radius: 15px;
+}
+

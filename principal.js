@@ -49,8 +49,7 @@ pokemonList.addEventListener('touchmove', (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const pokemonList = document.querySelector('.pokemonlist');
-  const pokeballImage = document.querySelector('.pokeball img');  
-  setTimeout(carregaPantalla(),750);
+  const pokeballImage = document.querySelector('.pokeball');
   pokemonList.addEventListener('scroll', () => {
     const scrollPosition = pokemonList.scrollTop;
 
