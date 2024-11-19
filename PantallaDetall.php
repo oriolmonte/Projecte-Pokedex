@@ -47,8 +47,6 @@
         <!--#endregion-->
         <!-- #region dades pokemon-->
             <div class="dadespokemon">
-                <div class="pokemontagline">                    
-                </div>
                 <div class="dadespokemoncontainer">
                     <div class="types">
                         <?php 
@@ -60,7 +58,6 @@
                             getMeasurements();
                         ?>
                     </div>
-                    <div class="evolutions"></div>
                 </div>
                 <div class="abilitiessection">
                     <?php 

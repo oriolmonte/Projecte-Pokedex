@@ -158,7 +158,7 @@ function getTypes(){
 
 function getMeasurements(){
     global $globalPokemon;
-    echo '<div>Height: ' . $globalPokemon['height'] / 10 . ' m</div>';
+    echo '<div styles="Padding=10px">Height: ' . $globalPokemon['height'] / 10 . ' m</div>';
     echo '<div>Weight: '.$globalPokemon['weight'] / 10 .' kg</div>';
 }
 
@@ -167,7 +167,7 @@ function getAbilities(){
     echo '<table><tr>';
     $abilities = $globalPokemon['abilities'];
     foreach($abilities as $ability){
-        echo '<td>'. ucfirst($ability['ability']['name']).'</td>';
+        echo '<td class="abilityname">'. ucfirst($ability['ability']['name']).'</td>';
     }
     echo '</tr><tr>';
     foreach($abilities as $ability){
@@ -183,7 +183,7 @@ function getAbilities(){
 
         foreach($abilityData['flavor_text_entries'] as $data){
             if($data['language']['name'] == 'en'){
-                echo '<td>'.$data['flavor_text'].'</td>';
+                echo '<td class="abilitytext">'.$data['flavor_text'].'</td>';
                 break;        
             }
         }
