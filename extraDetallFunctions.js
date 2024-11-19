@@ -94,7 +94,7 @@ function setButtonClicks(){
     const urlParams = new URLSearchParams(window.location.search);          
     const currentPokemon = urlParams.get('pokemon');
 
-    var serebiiHref = "https://www.serebii.net/pokedex-sv/" + currentPokemon;
+    var serebiiHref = "https://www.serebii.net/pokedex-swsh/" + currentPokemon;
 
     serebiiButton.addEventListener("click", function() {
          window.location.href = serebiiHref;

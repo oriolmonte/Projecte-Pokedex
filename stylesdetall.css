@@ -183,12 +183,19 @@ body, html {
 .statstable{
     width: 767px;
     height: 468px;
-    background-color: green;
+    background-image: url(./res/col1.png);
+    background-size: cover;
+    background-repeat: no-repeat; /* Prevents tiling */
+    color: rgb(160, 220, 255);
+    padding: 30px;
+    padding-left: 50px;
+    justify-content: center;
+    align-items: center;
 }
 .statbar
 {
     width: 80%;
-    height:35px;
+    height: 20px;
     padding-bottom: 5px;
     padding-top: 5px;
     background-color: #8a7f7f;
@@ -202,8 +209,16 @@ body, html {
     width: 10%;
 }
 .innerStatsBar{
-    height: 100%;
+    height: 90%;
     width:0;
     border-radius: 15px;
 }
-
+.statstable th {
+    padding: 5px !important; /* Reduce padding */
+    line-height: 1 !important; /* Set a compact line height */
+    font-size: 30px !important; /* Reduce font size */
+    height: auto !important; /* Reset any fixed height */
+    text-align: center; /* Ensure proper alignment */
+    vertical-align: middle; /* Ensure text is vertically centered */
+    height: 50px !important; /* Set a specific height */
+}

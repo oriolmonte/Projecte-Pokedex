@@ -90,7 +90,7 @@ function getStats(){
     echo '
                 <table class="statstable">
                     <tr>
-                        <th colspan="2">Stats</th>
+                        <th colspan="3">Stats</th>
                     </tr>
                     <tr>
                         <td class="statname">HP</td>
